@@ -1,0 +1,578 @@
+:root {
+  --primary-color: #2F58CD;
+  --dark-color: #0A2540;
+  --light-bg: #F0F4F8;
+  --font-family: 'Montserrat', sans-serif;
+}
+
+/* Reset & Tipografía */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-family);
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ——— Navbar transparente → blanca al hacer scroll ——— */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0.5rem 0;
+  background: transparent;
+  box-shadow: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar.scrolled {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Flex interno */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo,
+.logo span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  transition: color 0.3s;
+}
+.logo-img {
+  width: 40px !important;
+  margin-right: 0.5rem;
+}
+
+/* Menú */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-menu a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Color blanco sobre hero */
+.navbar:not(.scrolled) .nav-menu a {
+  color: #fff;
+}
+/* Color oscuro tras scroll */
+.navbar.scrolled .nav-menu a {
+  color: var(--dark-color) !important;
+}
+/* Hover común para todos los enlaces */
+.nav-menu a:hover {
+  color: var(--primary-color) !important;
+}
+/* Mantener activo blanco sobre fondo transparente */
+.navbar:not(.scrolled) .nav-menu a.active {
+  color: #fff !important;
+}
+
+.navbar:not(.scrolled) .nav-menu a.active {
+  color: #fff !important;
+}
+
+/* Enlace activo con scroll */
+.navbar.scrolled .nav-menu a.active {
+  color: var(--primary-color) !important;
+}
+
+/* ——— Botones ——— */
+.btn-quote,
+.btn-primary {
+  position: relative;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 2px solid #fff;
+  border-radius: 0.25rem;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.btn-quote:hover,
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.btn-quote:active,
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.btn-quote:focus,
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47,88,205,0.4);
+}
+.btn-primary:hover {
+  background-color: var(--light-bg);
+  color: var(--dark-color);
+}
+.btn-quote:hover {
+  background-color: var(--dark-color);
+  color: #fff;
+}
+
+/* Hover en navbar transparente (también activo) */
+.navbar:not(.scrolled) .nav-menu a:hover,
+.navbar:not(.scrolled) .nav-menu a.active:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Logo y botones en oscuro tras scroll */
+.navbar.scrolled .logo,
+.navbar.scrolled .logo span,
+.navbar.scrolled .btn-quote {
+  color: var(--dark-color) !important;
+  border-color: var(--dark-color) !important;
+}
+
+/* ——— Hero ——— */
+.hero {
+  height: calc(100vh - 80px);
+  background: url('assets/Futuristic Robotic Design with Circuitry.png') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 17, 62, 0.7);
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.tagline {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: rgba(255,255,255,0.85);
+}
+.hero-title {
+  font-size: 3.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.highlight-bg {
+  color: #2e4ea6;
+  font-weight: 700;
+}
+
+/* ——— Acerca de ——— */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 2rem;
+  align-items: start;
+  padding: 6rem 0;
+  background: #fff;
+}
+.about-image img {
+  width: 100%;
+  border-radius: .5rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.features-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.feature-card {
+  flex: 1;
+  min-width: 180px;
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: .5rem;
+  text-align: center;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(47,88,205,0.2);
+}
+.icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.mission-icon    { background-image: url('assets/liderazgo.png'); }
+.vision-icon     { background-image: url('assets/vision.png'); }
+.values-icon     { background-image: url('assets/propuesta-de-valor.png'); }
+
+/* ——— Servicios ——— */
+.services {
+  background: #e8eefc;
+  padding: 6rem 0 3rem;
+}
+.services h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--dark-color);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 1rem;
+}
+.service-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  text-align: center;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(47,88,205,0.2);
+}
+.design-icon     { background-image: url('assets/diseno-industrial.png'); }
+.automation-icon { background-image: url('assets/fabricacion.png'); }
+.prototype-icon  { background-image: url('assets/prototipo.png'); }
+.consulting-icon { background-image: url('assets/servicios-de-consultoria.png'); }
+
+/* ——— Portafolio ——— */
+.section-header {
+  margin: 6rem 0 3rem;
+  text-align: center;
+}
+.section-subtitle {
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-size: .9rem;
+  margin-bottom: .5rem;
+}
+.section-title {
+  font-size: 2.5rem;
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+}
+.section-description {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 2rem;
+}
+.project-card {
+  background: #fff;
+  border-radius: .5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.project-content {
+  padding: 1.5rem;
+}
+.project-content h3 {
+  margin-bottom: .75rem;
+  font-size: 1.25rem;
+  color: var(--dark-color);
+}
+.project-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ——— Lightbox ——— */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.lightbox.show {
+  display: flex;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.lightbox-img {
+  max-width: 80vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: .5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ——— Contacto ——— */
+.contact {
+  background: #e8eefc;
+  padding: 6rem 0 3rem;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.contact-form-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: .5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.contact-form-card h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--dark-color);
+}
+.contact-form-card .row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.contact-form-card .field {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+.contact-form-card input,
+.contact-form-card textarea {
+  width: 100%;
+  padding: .75rem;
+  border: 1px solid #ccc;
+  border-radius: .25rem;
+  font-family: inherit;
+}
+.contact-form-card button.btn-primary {
+  width: 100%;
+  padding: .75rem;
+  margin-top: .5rem;
+}
+
+/* ——— Info cards ——— */
+.contact-info-card .info-card {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1rem .5rem;
+  background: #fff;
+  border-radius: .5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+}
+.contact-info-card .info-card .icon {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  background-color: var(--light-bg);
+  border-radius: .5rem;
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.email-icon      { background-image: url('assets/correo-electronico.png'); }
+.phone-icon      { background-image: url('assets/telefono.png'); }
+.location-icon   { background-image: url('assets/marca-de-ubicacion.png'); }
+.contact-info-card .info-card > div {
+  display:flex; flex-direction:column; align-items:flex-start;
+  margin:0; padding:0;
+}
+.contact-info-card .info-card h4,
+.contact-info-card .info-card p {
+  margin:0; text-align:left;
+}
+
+
+/* ——— Hover uniforme ——— */
+.feature-card,
+.service-card,
+.project-card,
+.contact-info-card .info-card {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.feature-card:hover,
+.service-card:hover,
+.project-card:hover,
+.contact-info-card .info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(47,88,205,0.2);
+}
+
+/* ——— Footer ——— */
+.footer {
+  background: var(--dark-color);
+  color: #fff;
+  padding: 2rem 0 1rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.footer-about p,
+.footer-contact p {
+  margin: .5rem 0;
+}
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.footer-links a {
+  text-decoration: none;
+  color: #fff;
+  opacity: .8;
+  transition: opacity .3s;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer-links h4,
+.footer-contact h4 {
+  margin-bottom: .75rem;
+  font-size: 1.1rem;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1rem;
+  text-align: center;
+  font-size: .9rem;
+  color: #aaa;
+}
+
+/* ——— Responsive Navbar ——— */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-toggle .bar {
+  width: 24px;
+  height: 3px;
+  background: var(--dark-color);
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .nav-menu.active {
+    display: block;
+  }
+  .nav-menu ul {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .nav-menu ul li a {
+    color: var(--dark-color) !important;
+  }
+  .nav-menu ul li a:hover {
+    color: var(--primary-color) !important;
+  }
+  .nav-menu ul li a.active {
+    color: var(--primary-color) !important;
+  }
+    .navbar:not(.scrolled) .nav-menu.active a.active {
+    /* Ponemos tu color primario - o el que prefieras */
+    color: var(--primary-color) !important;
+  }
+}
+
+/* ——— Enlace activo siempre ——— */
+header.navbar .nav-menu ul li a.active {
+  color: var(--primary-color) !important;
+}
+
+/* ——— Toast Notification ——— */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2F58CD;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
